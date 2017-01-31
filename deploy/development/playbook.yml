@@ -1,0 +1,19 @@
+---
+- hosts: all
+  sudo: true
+  remote_user: root
+  gather_facts: false
+  pre_tasks:
+    - raw: sudo apt-get -y install python-minimal
+    - action: setup
+  vars:
+    document_root: /vagrant
+  handlers:
+    - name: reload apache
+      service: name=apache2 state=reloaded
+  tasks:
+  - name: Update apt cache
+    apt: update_cache=yes
+  - include: tasks/apache.yml
+  - include: tasks/mysql.yml
+  - include: tasks/php.yml
