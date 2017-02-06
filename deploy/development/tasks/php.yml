@@ -5,6 +5,14 @@
 - name: Install PHP Modules
   apt: name={{ item }} state=present
   with_items:
-    - php7.0-mysql
-    - libapache2-mod-php7.0
-    - php7.0-curl
+    - php-mysql
+    - libapache2-mod-php
+    - php-curl
+    - php-imagick
+    - php-json
+    - php-mbstring
+    - php-ssh2
+    - php-xdebug
+    - php-xml
+    - php-mcrypt
+    - composer
