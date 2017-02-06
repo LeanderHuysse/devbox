@@ -1,3 +1,16 @@
 ---
 - name: Install MySQL 5.7
   apt: name=mysql-server-5.7 state=present
+
+- name: Remove anonymous users
+  mysql_user:
+    name: ''
+    host: localhost
+    state: absent
+
+- name: Create root account for MySQL
+  mysql_user:
+    name: root
+    password: root
+    priv: '*.*:ALL'
+    state: present
