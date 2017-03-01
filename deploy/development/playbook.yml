@@ -4,7 +4,7 @@
   remote_user: root
   gather_facts: false
   pre_tasks:
-    - raw: sudo apt-get -y install python-minimal
+    - raw: sudo apt-get -y install python-minimal python-pip
     - action: setup
   vars:
     document_root: /vagrant
@@ -15,5 +15,7 @@
   - name: Update apt cache
     apt: update_cache=yes
   - include: tasks/apache.yml
-  - include: tasks/mysql.yml
   - include: tasks/php.yml
+  roles:
+    - role: geerlingguy.mysql
+      become: yes
