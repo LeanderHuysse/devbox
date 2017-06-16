@@ -1,6 +1,6 @@
 ---
 - name: Install PHP 7.1
-  apt: name=php7.1 state=present
+  apt: name=php71 state=present
 
 - name: Install PHP Modules
   apt: name={{ item }} state=present
