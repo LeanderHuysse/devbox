@@ -2,6 +2,10 @@
 - name: Install Apache2
   apt: name=apache2 state=present
 
+- apache2_module:
+  state: present
+  name: rewrite
+
 - name: Copy across new virtual host
   template:
     src=templates/virtual-hosts.conf.j2
